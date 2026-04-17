@@ -96,7 +96,11 @@ function renderTutorials() {
 // COLOR PALETTE
 // =====================
 function randomColor() {
-  return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, "0");
+  rfunction generateHEXColor(hue) {
+  const saturation = Math.floor(Math.random() * 30) + 60; // 60–90%
+  const lightness = Math.floor(Math.random() * 30) + 40;  // 40–70%
+
+  return `hex(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
 function generatePalette() {
@@ -106,28 +110,31 @@ function generatePalette() {
   const paletteDiv = document.createElement("div");
   paletteDiv.className = "palette";
 
+  const baseHue = Math.floor(Math.random() * 360);
+
   for (let i = 0; i < 5; i++) {
-    const color = randomColor();
+    // Spread hues evenly → guarantees variety
+    const hue = (baseHue + i * 60) % 360;
+
+    const saturation = Math.floor(Math.random() * 30) + 60;
+    const lightness = Math.floor(Math.random() * 30) + 40;
+
+    const hsl = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    const hex = hslToHex(hue, saturation, lightness);
 
     const box = document.createElement("div");
     box.className = "color-box";
-    box.style.background = color;
+    box.style.background = hsl;
 
     box.innerHTML = `
-      <p>${color}</p>
-      <button onclick="copyColor('${color}', this)">Copy</button>
+      <p>${hex}</p>
+      <button onclick="copyColor('${hex}', this)">Copy</button>
     `;
 
     paletteDiv.appendChild(box);
   }
 
   container.appendChild(paletteDiv);
-}
-
-function copyColor(color, btn) {
-  navigator.clipboard.writeText(color);
-  btn.innerText = "Copied!";
-  setTimeout(() => btn.innerText = "Copy", 1000);
 }
 
 // =====================
