@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Art Resource Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <h1>Art Hub</h1>
+  <ul>
+    <li><a href="#" onclick="showPage('home')">Home</a></li>
+    <li><a href="#" onclick="showPage('palette')">Color Palettes</a></li>
+    <li><a href="#" onclick="showPage('anatomy')">Anatomy</a></li>
+    <li><a href="#" onclick="showPage('tutorials')">Tutorials</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="page active">
+  <h2>Welcome to Art Resource Hub</h2>
+  <p>A beginner-friendly collection of curated art tools and learning resources.</p>
+</section>
+
+<!-- COLOR PALETTE -->
+<section id="palette" class="page">
+  <h2>Color Palette Generator</h2>
+  <div id="palette-container"></div>
+  <button onclick="generatePalette()">Generate New Palette</button>
+</section>
+
+<!-- ANATOMY -->
+<section id="anatomy" class="page">
+  <h2>Anatomy & Pose References</h2>
+  <div id="anatomy-container" class="grid"></div>
+</section>
+
+<!-- TUTORIALS -->
+<section id="tutorials" class="page">
+  <h2>Art Tutorials</h2>
+  <div id="tutorials-container"></div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
