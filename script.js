@@ -1,9 +1,12 @@
 // =====================
 // PAGE NAVIGATION
 // =====================
-function showPage(pageId) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.getElementById(pageId).classList.add("active");
+function navigate(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+
+    // Save current page
+    localStorage.setItem('currentPage', pageId);
 }
 
 // =====================
